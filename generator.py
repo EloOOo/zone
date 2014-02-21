@@ -37,3 +37,5 @@ print str(zone) + " zones cree"
 save = open(sys.argv[1], "w")
 save.write(json.dumps(capteur,indent=4))
 save.close() 
+
+print "resultat ecrit dans " + sys.argv[1]
