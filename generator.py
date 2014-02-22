@@ -18,7 +18,7 @@ if len(sys.argv)<2:
 if len(sys.argv)>=3 :
 	seed = int("0" + sys.argv[2])
 else : 
-	seed = random.randint(sys.maxint)
+	seed = random.randint(0,sys.maxint)
 rand = random.Random(seed)
 print "seed: " + str(seed)
 
@@ -42,7 +42,7 @@ print str(len(capteur)) + " capteurs cree"
 print str(zone) + " zones cree"
 
 save = open(sys.argv[1], "w")
-save.write("// seed = " + str(seed) + "\n\n" +json.dumps(capteur,indent=4))
+save.write(json.dumps(capteur,indent=4))
 save.close() 
 
 print "resultat ecrit dans " + sys.argv[1]
