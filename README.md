@@ -3,13 +3,14 @@ Zone
 
 Projet d'optimisation avec GLPK: problème d'activation de capteur pour la surveillance de zones.
 
-[énnoncé](http://raw.github.com/Ricain/zone/projet-plcapteurs.pdf)
+[énnoncé](https://raw.github.com/Ricain/zone/master/projet-plcapteurs.pdf)
 
 # Import
 
     import random
     import json
     import sys
+    import networkx
 
 # Réalisation
 
