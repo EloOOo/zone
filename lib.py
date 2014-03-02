@@ -39,13 +39,32 @@ def unicode_to_ascii(input):
 
 # renvoie toute les configurations, prend en parametre un dictionnaire de type inverse
 def configuration(datas):
-	configuration = []
+	all = []
+	vers(datas,[],1,all)
+	return all
 
-	return configuration	
-
-def vers(tree,config,level):
+# parcour des donnes et place toute les confgurations dans data
+def vers(tree,config,level,all):
+	if len(tree)<level:
+		for x in all:
+			if config_equal(config,x):
+				return
+		all.append(config)
+		return 
 	for x in tree[level]:
-		pass
+		inter = list(config)
+		if x not in config:
+			inter.append(x)
+		vers(tree, inter, level+1, all)
+
+# renvoie vrai si les deux configuration sont eguale
+def config_equal(config1,config2):
+	if len(config1)!=len(config2):
+		return False
+	for x in config1:
+		if x not in config2:
+			return False
+	return True
 
 # renvoi le dictionnaire inverse: capteur en fonction des zonne: {zone:[capteur,capteur,etc],etc}
 def inverse(datas):
