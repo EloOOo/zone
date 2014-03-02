@@ -4,7 +4,7 @@ import json
 import networkx as nx
 
 # prend le nom d'un fichier et renvoie le graph correspondant
-def loadfile(filename):
+def file_to_graph(filename):
 	graph = nx.Graph()
 	with open(filename) as content:
 		edges = {}
@@ -18,3 +18,42 @@ def loadfile(filename):
 				for y in range(value["zone"].index(x)+1,len(value["zone"])):
 					graph.add_edge(x,value["zone"][y],capteur=int(key),tmp=int(value["tmp"])) 
 	return graph
+
+# prend le nom d'un fichier et renvoie le dictionnaire correspondant
+def file_to_dict(filename):
+	with open(filename) as content:
+		return unicode_to_ascii(json.loads(content.read()))
+
+# convert the argument to asccii
+def unicode_to_ascii(input):
+	if isinstance(input, dict):
+		return {unicode_to_ascii(key):unicode_to_ascii(value) for key,value in input.iteritems()}
+	elif isinstance(input, list):
+		return [unicode_to_ascii(element) for element in input]
+	elif isinstance(input, unicode):
+		return unicode_to_ascii(input.encode('utf-8'))
+	elif isinstance(input, str) and input.isdigit():
+		return int(input)
+	else:
+		return input
+
+# renvoie toute les configurations, prend en parametre un dictionnaire de type inverse
+def configuration(datas):
+	configuration = []
+
+	return configuration	
+
+def vers(tree,config,level):
+	for x in tree[level]:
+		pass
+
+# renvoi le dictionnaire inverse: capteur en fonction des zonne: {zone:[capteur,capteur,etc],etc}
+def inverse(datas):
+	inverse = {}
+	for capteur,all in datas.iteritems():
+		for x in all["zone"]:
+			if x in inverse:
+				inverse[x].append(capteur)
+			else:
+				inverse[x] = [capteur]
+	return inverse
