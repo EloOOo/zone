@@ -2,7 +2,7 @@
 
 import sys
 
-execfile("lib.py")
+from lib import *
 
 const = {}
 const["minconfig"]  = 0    # nombre minumun de config a obtenir, zero si pas de minimum
