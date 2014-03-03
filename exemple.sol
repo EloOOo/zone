@@ -7,10 +7,10 @@ Objective:  obj = 8.5 (MAXimum)
 
    No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
 ------ ------------ -- ------------- ------------- ------------- -------------
-     1 r.5          NU             6                           6           0.5 
-     2 r.6          NU             3                           3           0.5 
-     3 r.7          NU             2                           2           0.5 
-     4 r.8          NU             6                           6           0.5 
+     1 r.11         NU             6                           6           0.5 
+     2 r.12         NU             3                           3           0.5 
+     3 r.13         NU             2                           2           0.5 
+     4 r.14         NU             6                           6           0.5 
 
    No. Column name  St   Activity     Lower bound   Upper bound    Marginal
 ------ ------------ -- ------------- ------------- ------------- -------------

@@ -36,7 +36,11 @@ for config in all_config:
 		if capteur not in capteur_used:
 			capteur_used.append(capteur)
 
-sys.stdout.write("Maximize a")
+sys.stdout.write("\\ configurations: \n")
+for l in range(len(all_config)):
+	sys.stdout.write("\\  " + chr(ord("a")+l) + " = " + str(all_config[l]) + "\n")
+
+sys.stdout.write("\nMaximize a")
 for l in range(1,len(all_config)):
 	sys.stdout.write(" + " + chr(ord("a")+l))
 

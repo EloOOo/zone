@@ -1,3 +1,9 @@
+\ configurations: 
+\  a = [1, 2]
+\  b = [1, 3]
+\  c = [1, 4]
+\  d = [4, 2]
+
 Maximize a + b + c + d
 
 Subject To
