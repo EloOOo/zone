@@ -37,27 +37,44 @@ def unicode_to_ascii(input):
 	else:
 		return input
 
-# renvoie toute les configurations, prend en parametre un dictionnaire de type inverse
+# renvoie toute les configurations
 def configuration(datas,min):
 	all = []
-	vers(datas,[],1,all,min)
+	inv = inverse(datas)
+	vers(inv,datas,[],1,all,min)
 	return all
 
 # parcour des donnes et place toute les confgurations dans data
-def vers(tree,config,level,all,min):
-	if len(all)>=min and min!=0:
+def vers(tree,original,config,level,all,min):
+	if (len(all)>=min and min!=0) or not elementaire(config,original):
 		return
 	if len(tree)<level:
 		for x in all:
 			if config_equal(config,x):
 				return
 		all.append(config)
-		return 
+		return
 	for x in tree[level]:
-		inter = list(config)
+		inter = config
 		if x not in config:
+			inter = list(config)
 			inter.append(x)
-		vers(tree, inter, level+1, all, min)
+		vers(tree, original, inter, level+1, all, min)
+
+# renvoi vrai si ajouter x ferait que config reste elementare
+def elementaire(config,original):
+	all = []
+	for capteur in config:
+		all.extend(original[capteur]["zone"])
+	for capteur in config:
+		ok = False
+		for zone in original[capteur]["zone"]:
+			if all.count(zone)==1:
+				ok = True
+				break
+		if not ok:
+			return False
+	return True
 
 # renvoie vrai si les deux configuration sont eguale
 def config_equal(config1,config2):

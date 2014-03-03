@@ -27,4 +27,4 @@ for arg in sys.argv[2:]:
 			print arg[1:] + ": illegal option"
 			exit(2)
 
-print "\n".join([str(x) for x in configuration(inverse(file_to_dict(sys.argv[1])),const["minconfig"])])
+print "\n".join([str(x) for x in configuration(file_to_dict(sys.argv[1]),const["minconfig"])])
