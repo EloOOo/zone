@@ -38,13 +38,15 @@ def unicode_to_ascii(input):
 		return input
 
 # renvoie toute les configurations, prend en parametre un dictionnaire de type inverse
-def configuration(datas):
+def configuration(datas,min):
 	all = []
-	vers(datas,[],1,all)
+	vers(datas,[],1,all,min)
 	return all
 
 # parcour des donnes et place toute les confgurations dans data
-def vers(tree,config,level,all):
+def vers(tree,config,level,all,min):
+	if len(all)>=min and min!=0:
+		return
 	if len(tree)<level:
 		for x in all:
 			if config_equal(config,x):
@@ -55,7 +57,7 @@ def vers(tree,config,level,all):
 		inter = list(config)
 		if x not in config:
 			inter.append(x)
-		vers(tree, inter, level+1, all)
+		vers(tree, inter, level+1, all, min)
 
 # renvoie vrai si les deux configuration sont eguale
 def config_equal(config1,config2):
