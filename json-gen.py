@@ -18,6 +18,8 @@ if len(sys.argv)<2:
 	for x,y in const.iteritems():
 		if type(y) is int:
 			print "[-" + x + " <int>]"
+		elif type(y) is bool:
+			print "[-" + x + " <bool>]"
 		else :
 			print "[-" + x + " <float>]"
 	exit(1)
@@ -27,6 +29,8 @@ for arg in sys.argv[2:]:
 		if arg[1:] in const:
 			if type(const[arg[1:]]) is int:
 				const[arg[1:]] = int(sys.argv[sys.argv.index(arg)+1])
+			elif type(const[arg[1:]]) is bool:
+				const[arg[1:]] = bool(sys.argv[sys.argv.index(arg)+1])
 			else :
 				const[arg[1:]] = float(sys.argv[sys.argv.index(arg)+1])
 		else :
