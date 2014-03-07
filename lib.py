@@ -124,3 +124,9 @@ def inverse(datas):
 			else:
 				inverse[x] = [capteur]
 	return inverse
+
+# renvoie une inconnu correspondant a l'index
+def inconu(index):
+	if index>(ord("z")-ord("a")):
+		return ("z" + str(index-ord("z")+ord("a")))
+	return chr(ord("a")+index)
