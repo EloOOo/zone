@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import json
-import networkx as nx
+import random
 
 # prend le nom d'un fichier et renvoie le dictionnaire correspondant
 def file_to_dict(filename):
@@ -22,11 +22,35 @@ def unicode_to_ascii(input):
 		return input
 
 # renvoie toute les configurations
-def configuration(datas,min,alea):
+def configuration(datas,min,aleaf):
 	all = []
 	inv = inverse(datas)
-	vers(inv,datas,[],1,all,min)
+	if aleaf:
+		alea(inv,min,all,datas)
+	else:
+		vers(inv,datas,[],1,all,min)
 	return all
+
+# methode aleatoire pour obtenir des configuration elementaire
+def alea(inv,nb,all,original):
+	for _ in range(nb):
+		config = []
+		for zone,localcapteur in inv.iteritems():
+			toadd = True
+			for capteur in localcapteur:
+				if capteur in config:
+					toadd = False
+					break
+			if toadd:
+				config.append(localcapteur[random.randint(0,len(localcapteur)-1)])
+		ok = True
+		config = elementarise(config,original)
+		for x in all:
+			if config_equal(config,x):
+				ok = False
+		if ok:
+			all.append(config)
+				
 
 # parcour des donnes et place toute les confgurations dans data
 def vers(tree,original,config,level,all,min):
@@ -59,6 +83,27 @@ def elementaire(config,original):
 		if not ok:
 			return False
 	return True
+
+# rend la configuration elementarie
+def elementarise(config,original):
+	config = list(config)
+	idx = 0
+	while idx<len(config):
+		current = list(original[config[idx]]["zone"])
+		for capteur in config:
+			if capteur==config[idx] :
+				continue
+			i = 0;
+			while i < len(current):
+				if current[i] in original[capteur]["zone"]:
+					current.pop(i)
+				else:
+					i += 1
+		if len(current)==0:
+			config.pop(idx)
+		else:
+			idx += 1	
+	return config
 
 # renvoie vrai si les deux configuration sont eguale
 def config_equal(config1,config2):
