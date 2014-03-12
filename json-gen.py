@@ -13,6 +13,7 @@ const["mintmp"]     = 2     # temps de vie minimum d'un capteur
 const["maxtmp"]     = 10    # temps de vie maximun d'un capteur
 const["seed"]       = 0     # graine du generateur de nombre aleatoire, zero pour choisi aleatoirement
 
+#test nombre arguments
 if len(sys.argv)<2:
 	print "usage: filename "
 	for x,y in const.iteritems():
