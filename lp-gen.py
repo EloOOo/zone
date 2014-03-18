@@ -6,7 +6,7 @@ from lib import file_to_dict,configuration,inconu
 
 const = {}
 const["nbconfig"]  = 0     # nombre de configuration a obtenir, zero pour obtenir toute les configurations
-const["algoalea"]  = False # algorithme aloeatoire pour trouver les configuration, bien pour les gros fichiers 
+const["algoalea"]  = False # algorithme aloeatoire pour trouver les configurations, bien pour les gros fichiers 
 
 if len(sys.argv)<2:
 	print "usage: filename "
