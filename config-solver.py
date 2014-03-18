@@ -7,7 +7,7 @@ from lib import configuration,file_to_dict
 const = {}
 const["nbconfig"]  = 0     # nombre de configuration a obtenir, zero pour obtenir toute les configurations
 const["algoalea"]  = False # algorithme aleatoire pour trouver les configuration, bien pour les gros fichiers 
-
+#
 if len(sys.argv)<2:
 	print "usage: filename "
 	for x,y in const.iteritems():
